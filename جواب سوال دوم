@@ -1,0 +1,20 @@
+from datetime import datetime
+from dateutil.parser import parse
+
+def convert_to_shamsi(text):
+
+
+  shamsi_dates = []
+  for word in text.split():
+    try:
+      date = parse(word)
+      shamsi_date = date.strftime("%Y/%m/%d") 
+      shamsi_dates.append(shamsi_date)
+    except ValueError:
+      pass 
+  return shamsi_dates
+
+
+text = "تاریخ‌های مختلف: 11-07-2024 9-7-2024 9/7/204 9/7/24"
+result = convert_to_shamsi(text)
+print(result)
